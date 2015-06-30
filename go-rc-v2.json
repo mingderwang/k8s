@@ -1,0 +1,38 @@
+{
+  "apiVersion": "v1", 
+  "kind": "ReplicationController", 
+  "metadata": {
+    "labels": {
+      "app": "guestbook"
+    }, 
+    "name": "guestbook2"
+  }, 
+  "spec": {
+    "replicas": 1, 
+    "selector": {
+      "app": "guestbook2"
+    }, 
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "guestbook2"
+        }
+      }, 
+      "spec": {
+        "containers": [
+          {
+            "image": "kubernetes/guestbook:v2", 
+            "name": "guestbook", 
+            "ports": [
+              {
+                "containerPort": 3000, 
+                "name": "http-server"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+
